@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VoteGuide AI — Your Smart Election Assistant</title>
+  <meta name="description" content="AI-powered election guide that walks you through registration, verification, voting, and results. Personalized assistance for every voter.">
+  <meta name="theme-color" content="#0a0e27">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🗳️</text></svg>">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- ========== NAVIGATION ========== -->
+  <nav id="main-nav" role="navigation" aria-label="Main navigation">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo" aria-label="VoteGuide AI Home">
+        <span class="logo-icon">🗳️</span>
+        <span class="logo-text">Vote<span class="gradient-text">Guide</span></span>
+      </a>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#journey">Journey</a></li>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button id="motion-toggle" class="btn-icon" aria-label="Toggle reduced motion" title="Toggle animations">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </button>
+        <button id="nav-cta" class="btn-primary btn-sm" onclick="openChat()">Get Started</button>
+        <button id="mobile-menu-toggle" class="btn-icon mobile-only" aria-label="Toggle menu" aria-expanded="false">
+          <span class="hamburger"></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ========== HERO SECTION ========== -->
+  <section id="hero">
+    <div class="hero-bg-particles" id="hero-particles"></div>
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span class="badge-dot"></span>
+        AI-Powered Election Assistant
+      </div>
+      <h1>
+        Your Personal<br>
+        <span class="gradient-text" id="hero-typed">Election Guide</span>
+      </h1>
+      <p class="hero-subtitle">
+        Navigate registration, verification, voting, and results with 
+        an intelligent assistant tailored to your needs.
+      </p>
+      <div class="hero-buttons">
+        <button class="btn-primary btn-lg" onclick="openChat()">
+          <span>Start Your Journey</span>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </button>
+        <a href="#journey" class="btn-outline btn-lg">
+          <span>Learn More</span>
+        </a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat" data-target="50" data-suffix="+">
+          <span class="stat-number">0</span>
+          <span class="stat-suffix">+</span>
+          <span class="stat-label">States Covered</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat" data-target="200" data-suffix="M+">
+          <span class="stat-number">0</span>
+          <span class="stat-suffix">M+</span>
+          <span class="stat-label">Eligible Voters</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat" data-target="24" data-suffix="/7">
+          <span class="stat-number">0</span>
+          <span class="stat-suffix">/7</span>
+          <span class="stat-label">AI Assistance</span>
+        </div>
+      </div>
+    </div>
+    <div class="hero-globe">
+      <canvas id="globe-canvas" aria-hidden="true"></canvas>
+      <div class="globe-glow"></div>
+    </div>
+  </section>
+
+  <!-- ========== JOURNEY TIMELINE ========== -->
+  <section id="journey" class="section">
+    <div class="section-header animate-on-scroll">
+      <span class="section-badge">Your Path</span>
+      <h2>The Voting <span class="gradient-text">Journey</span></h2>
+      <p class="section-subtitle">Four simple steps from registration to results. We guide you through each one.</p>
+    </div>
+    <div class="journey-timeline animate-on-scroll">
+      <div class="timeline-track">
+        <div class="timeline-progress" id="journey-progress"></div>
+      </div>
+      <div class="timeline-steps" id="timeline-steps">  
+        <!-- Step 1 -->
+        <div class="step-card active" data-step="1" tabindex="0" role="button" aria-label="Step 1: Registration">
+          <div class="step-connector"></div>
+          <div class="step-badge">1</div>
+          <div class="step-icon">📋</div>
+          <h3>Registration</h3>
+          <p>Register to vote in your state. We'll guide you through the requirements.</p>
+          <div class="step-status">
+            <span class="status-dot"></span>
+            <span>Start Here</span>
+          </div>
+        </div>
+        <!-- Step 2 -->
+        <div class="step-card" data-step="2" tabindex="0" role="button" aria-label="Step 2: Verification">
+          <div class="step-connector"></div>
+          <div class="step-badge">2</div>
+          <div class="step-icon">✅</div>
+          <h3>Verification</h3>
+          <p>Verify your identity and confirm your voter registration status.</p>
+          <div class="step-status">
+            <span class="status-dot"></span>
+            <span>Upcoming</span>
+          </div>
+        </div>
+        <!-- Step 3 -->
+        <div class="step-card" data-step="3" tabindex="0" role="button" aria-label="Step 3: Voting">
+          <div class="step-connector"></div>
+          <div class="step-badge">3</div>
+          <div class="step-icon">🗳️</div>
+          <h3>Voting</h3>
+          <p>Find your polling station, know what to bring, and cast your vote.</p>
+          <div class="step-status">
+            <span class="status-dot"></span>
+            <span>Upcoming</span>
+          </div>
+        </div>
+        <!-- Step 4 -->
+        <div class="step-card" data-step="4" tabindex="0" role="button" aria-label="Step 4: Results">
+          <div class="step-connector"></div>
+          <div class="step-badge">4</div>
+          <div class="step-icon">📊</div>
+          <h3>Results</h3>
+          <p>Track election results and understand the outcome in real-time.</p>
+          <div class="step-status">
+            <span class="status-dot"></span>
+            <span>Upcoming</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FEATURES ========== -->
+  <section id="features" class="section">
+    <div class="section-header animate-on-scroll">
+      <span class="section-badge">Capabilities</span>
+      <h2>Smart <span class="gradient-text">Features</span></h2>
+      <p class="section-subtitle">Everything you need for a smooth election experience, powered by AI.</p>
+    </div>
+    <div class="features-grid animate-on-scroll">
+      <div class="feature-card" tabindex="0">
+        <div class="feature-icon-wrap">
+          <div class="feature-icon">🤖</div>
+        </div>
+        <h3>AI Assistant</h3>
+        <p>Intelligent chatbot that personalizes your election journey based on age, location, and voter status.</p>
+      </div>
+      <div class="feature-card" tabindex="0">
+        <div class="feature-icon-wrap">
+          <div class="feature-icon">📍</div>
+        </div>
+        <h3>Polling Stations</h3>
+        <p>Find your nearest polling station with Google Maps integration and get real-time directions.</p>
+      </div>
+      <div class="feature-card" tabindex="0">
+        <div class="feature-icon-wrap">
+          <div class="feature-icon">📅</div>
+        </div>
+        <h3>Smart Reminders</h3>
+        <p>Set Google Calendar reminders for registration deadlines, early voting, and Election Day.</p>
+      </div>
+      <div class="feature-card" tabindex="0">
+        <div class="feature-icon-wrap">
+          <div class="feature-icon">📊</div>
+        </div>
+        <h3>Progress Tracking</h3>
+        <p>Track your voting journey progress with Firebase-powered persistence across devices.</p>
+      </div>
+      <div class="feature-card" tabindex="0">
+        <div class="feature-icon-wrap">
+          <div class="feature-icon">♿</div>
+        </div>
+        <h3>Accessible Design</h3>
+        <p>WCAG-compliant interface with keyboard navigation, screen reader support, and reduced motion options.</p>
+      </div>
+      <div class="feature-card" tabindex="0">
+        <div class="feature-icon-wrap">
+          <div class="feature-icon">🔒</div>
+        </div>
+        <h3>Privacy First</h3>
+        <p>Your personal data never leaves your device. Local storage keeps your progress safe and private.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FAQ ========== -->
+  <section id="faq" class="section">
+    <div class="section-header animate-on-scroll">
+      <span class="section-badge">Common Questions</span>
+      <h2>Frequently <span class="gradient-text">Asked</span></h2>
+      <p class="section-subtitle">Quick answers to common election questions.</p>
+    </div>
+    <div class="faq-list animate-on-scroll">
+      <details class="faq-item" id="faq-1">
+        <summary>
+          <span>How do I register to vote?</span>
+          <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </summary>
+        <div class="faq-answer">
+          <p>You can register to vote online through your state's election website, by mail, or in person at your local election office. Requirements vary by state, but generally you need to be a U.S. citizen, be 18 years old by Election Day, and meet your state's residency requirements. Our AI assistant can guide you through the specific steps for your state.</p>
+        </div>
+      </details>
+      <details class="faq-item" id="faq-2">
+        <summary>
+          <span>What documents do I need to vote?</span>
+          <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </summary>
+        <div class="faq-answer">
+          <p>Requirements vary by state. Common forms of voter ID include a driver's license, state-issued ID, passport, or military ID. Some states also accept utility bills, bank statements, or other official documents. Use our assistant to find the exact requirements for your state.</p>
+        </div>
+      </details>
+      <details class="faq-item" id="faq-3">
+        <summary>
+          <span>Can I vote if I recently moved?</span>
+          <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </summary>
+        <div class="faq-answer">
+          <p>Yes! If you've moved within the same state, you typically need to update your voter registration with your new address. If you've moved to a new state, you'll need to register in your new state. Many states allow same-day registration. Check your state's deadlines to make sure you're registered in time.</p>
+        </div>
+      </details>
+      <details class="faq-item" id="faq-4">
+        <summary>
+          <span>What is early voting and absentee voting?</span>
+          <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </summary>
+        <div class="faq-answer">
+          <p>Early voting allows you to cast your ballot before Election Day at designated locations. Absentee voting (vote by mail) lets you mail in your ballot if you can't make it to the polls. Availability and rules vary by state. Our assistant can help you explore these options based on your location.</p>
+        </div>
+      </details>
+      <details class="faq-item" id="faq-5">
+        <summary>
+          <span>Is my information safe with VoteGuide?</span>
+          <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </summary>
+        <div class="faq-answer">
+          <p>Absolutely. VoteGuide stores your journey progress locally on your device using your browser's localStorage. We never collect, store, or transmit your personal information to any server. Your privacy is our priority.</p>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer id="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="logo-icon">🗳️</span>
+        <span class="logo-text">Vote<span class="gradient-text">Guide</span></span>
+        <p class="footer-tagline">Empowering every voter with AI-guided assistance.</p>
+      </div>
+      <div class="footer-links-group">
+        <div class="footer-col">
+          <h4>Navigate</h4>
+          <a href="#journey">Journey</a>
+          <a href="#features">Features</a>
+          <a href="#faq">FAQ</a>
+        </div>
+        <div class="footer-col">
+          <h4>Resources</h4>
+          <a href="https://vote.gov" target="_blank" rel="noopener">Vote.gov</a>
+          <a href="https://www.usa.gov/voter-registration" target="_blank" rel="noopener">USA.gov Registration</a>
+          <a href="https://www.eac.gov" target="_blank" rel="noopener">Election Commission</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 VoteGuide AI. For informational purposes only.</p>
+        <div class="footer-a11y">
+          <button id="footer-motion-toggle" class="btn-text" onclick="toggleReducedMotion()">
+            Toggle Animations
+          </button>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========== CHAT WIDGET ========== -->
+  <div id="chat-widget" class="chat-closed" role="complementary" aria-label="Election Guide Chat Assistant">
+    <!-- Toggle Button -->
+    <button id="chat-toggle" class="chat-fab" onclick="toggleChat()" aria-label="Open election guide chat" aria-expanded="false">
+      <span class="fab-icon chat-icon">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+      </span>
+      <span class="fab-icon close-icon">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </span>
+      <span class="fab-badge" id="chat-badge">1</span>
+    </button>
+
+    <!-- Chat Panel -->
+    <div id="chat-panel" class="chat-panel" role="dialog" aria-label="Chat with VoteGuide AI">
+      <div class="chat-header">
+        <div class="chat-header-info">
+          <div class="chat-avatar">🗳️</div>
+          <div>
+            <h3>VoteGuide AI</h3>
+            <span class="chat-status"><span class="status-indicator"></span> Online</span>
+          </div>
+        </div>
+        <div class="chat-header-actions">
+          <button class="btn-icon" onclick="resetChat()" aria-label="Reset chat" title="Start over">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 4v6h6M23 20v-6h-6"/><path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4l-4.64 4.36A9 9 0 0 1 3.51 15"/></svg>
+          </button>
+          <button class="btn-icon" onclick="toggleChat()" aria-label="Close chat">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+          </button>
+        </div>
+      </div>
+      <div class="chat-messages" id="chat-messages" role="log" aria-live="polite">
+        <!-- Messages injected by JS -->
+      </div>
+      <div class="chat-input-area" id="chat-input-area">
+        <div class="chat-quick-replies" id="chat-quick-replies">
+          <!-- Quick reply buttons injected by JS -->
+        </div>
+        <div class="chat-input-row">
+          <input type="text" id="chat-input" placeholder="Type your message..." aria-label="Chat message input" autocomplete="off">
+          <button id="chat-send" class="btn-send" onclick="sendUserMessage()" aria-label="Send message">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
